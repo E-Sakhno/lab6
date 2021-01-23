@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 # 5. Использовать словарь, содержащий следующие ключи:
 # название пункта назначения рейса;
 # номер рейса;
@@ -10,7 +13,6 @@
 # если таких рейсов нет, выдать на дисплей соответствующее сообщение.
 
 
-from datetime import date
 import sys
 if __name__ == '__main__':
     # Список работников.
@@ -59,13 +61,13 @@ if __name__ == '__main__':
             # Вывести данные о всех рейсах.
             for idx, flight in enumerate(flights, 1):
                 print(
-                        '| {:>4} | {:<30} | {:<20} | {:>16} |'.format(
-                            idx,
-                            flight.get('destination', ''),
-                            flight.get('numb', ''),
-                            flight.get('fl_type', 0)
-                            )
+                    '| {:>4} | {:<30} | {:<20} | {:>16} |'.format(
+                        idx,
+                        flight.get('destination', ''),
+                        flight.get('numb', ''),
+                        flight.get('fl_type', 0)
                     )
+                )
                 print(line)
 
         elif command.startswith('select '):
@@ -77,13 +79,14 @@ if __name__ == '__main__':
                 if flight.get('fl_type') == parts[1]:
                     count += 1
                     print(
-                    '{:>4}: {}'.format(count, flight.get('destination', ''))
+                        '{:>4}: {}'.format(
+                            count, flight.get('destination', ''))
                     )
             # Если счетчик равен 0, то работники не найдены.
             if count == 0:
                 print("Рейсы с заданным типом самолета не найдены")
         elif command == 'help':
-                # Вывести справку о работе с программой.
+            # Вывести справку о работе с программой.
             print("Список команд:\n")
             print("add - добавить рейс;")
             print("list - вывести список рейсов;")
@@ -92,5 +95,3 @@ if __name__ == '__main__':
             print("exit - завершить работу с программой.")
         else:
             print(f"Неизвестная команда {command}", file=sys.stderr)
-
-
